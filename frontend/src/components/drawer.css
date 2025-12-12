@@ -1,0 +1,100 @@
+/* drawer.css - improved drawer */
+.drawer {
+  position: fixed;
+  right: 18px;
+  top: 72px;
+  width: 450px;
+  height: 82vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(250, 250, 255, 0.96)
+  );
+  border-radius: 14px;
+  box-shadow: 0 30px 70px rgba(10, 10, 30, 0.12);
+  z-index: 2200;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(10, 10, 30, 0.04);
+}
+.drawer-header h3 {
+  margin: 0;
+}
+.drawer-header .header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* body split left details / right actions */
+.drawer-body {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  flex: 1;
+}
+.drawer-body .left {
+  flex: 1;
+  overflow: auto;
+  padding-right: 6px;
+}
+.drawer-body .right {
+  width: 180px;
+  padding-left: 6px;
+  border-left: 1px dashed rgba(10, 10, 30, 0.03);
+}
+
+/* small inputs & buttons in drawer */
+.drawer input {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(10, 10, 30, 0.06);
+}
+.drawer button {
+  margin-top: 8px;
+}
+
+/* subtle section title */
+.drawer .section-title {
+  font-weight: 700;
+  margin-top: 4px;
+  color: #111827;
+}
+
+/* history table */
+.drawer table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.drawer th,
+.drawer td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid rgba(10, 10, 30, 0.03);
+}
+
+/* back button styling */
+.back-btn {
+  background: transparent;
+  border: 1px dashed rgba(10, 10, 30, 0.06);
+  color: #374151;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* logout button */
+.logout-btn {
+  background: linear-gradient(90deg, #ff6b6b, #ff9b6b);
+}
