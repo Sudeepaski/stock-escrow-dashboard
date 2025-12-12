@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://stock-escrow-dashboard-backend.onrender.com";
 
 export async function apiRegister(payload) {
   const r = await axios.post(`${API_BASE}/auth/register`, payload);
