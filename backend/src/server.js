@@ -12,7 +12,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret";
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 const SUPPORTED_TICKERS = ["GOOG", "TSLA", "AMZN", "META", "NVDA"];
 
 const app = express();
