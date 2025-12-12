@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "main": "src/server.js",
   "scripts": {
+      "migrate": "prisma migrate deploy",
     "dev": "nodemon --watch src --exec node src/server.js",
     "start": "node src/server.js"
   },
