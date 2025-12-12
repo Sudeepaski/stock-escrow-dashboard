@@ -1,25 +1,72 @@
+// --------------
+//  DATABASE
+// --------------
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+// --------------
+//  MODELS
+// --------------
+
+// USERS TABLE
+model users {
+  id             String   @id @default(uuid())
+  email          String   @unique
+  password_hash  String?
+  full_name      String?
+  dob            DateTime?
+  account_number String?
+  wallet_amount  Decimal  @default(0.0000)
+  created_at     DateTime @default(now())
+
+  positions          positions[]
+  history            position_history[]
+  wallet_transactions wallet_transactions[]
 }
 
-model User {
-  id            String         @id @default(uuid())
-  email         String         @unique
-  createdAt     DateTime       @default(now()) @map("created_at")
-  subscriptions Subscription[]
-}
-
-model Subscription {
+// OPEN POSITIONS TABLE
+model positions {
   id        String   @id @default(uuid())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @map("user_id")
+  user_id   String
   ticker    String
-  createdAt DateTime @default(now()) @map("created_at")
+  units     Int      @default(1)
+  buy_price Decimal
+  buy_ts    DateTime @default(now())
+  active    Boolean  @default(true)
 
-  @@unique([userId, ticker], name: "user_ticker_unique")
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+// CLOSED POSITIONS HISTORY
+model position_history {
+  id         String   @id @default(uuid())
+  user_id    String
+  ticker     String
+  units      Int
+  buy_price  Decimal
+  sell_price Decimal
+  buy_ts     DateTime
+  sell_ts    DateTime @default(now())
+  pnl        Decimal
+
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+// WALLET TRANSACTIONS
+model wallet_transactions {
+  id            String   @id @default(uuid())
+  user_id       String
+  amount_change Decimal
+  balance_after Decimal
+  type          String
+  note          String?
+  ts            DateTime @default(now())
+
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
