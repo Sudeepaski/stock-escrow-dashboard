@@ -149,7 +149,7 @@ export default function Register({ onRegistered }) {
 
             <form onSubmit={handleSubmit} style={{ marginTop: 12 }}>
               <input
-                placeholder="Full name (optional)"
+                placeholder="Full Name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 autoComplete="name"
@@ -230,7 +230,7 @@ export default function Register({ onRegistered }) {
                 onChange={(e) => setDob(e.target.value)}
               />
               <input
-                placeholder="Account number (optional)"
+                placeholder="Account number"
                 value={accountNumber}
                 onChange={(e) => setAccountNumber(e.target.value)}
               />
